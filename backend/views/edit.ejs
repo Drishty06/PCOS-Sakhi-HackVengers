@@ -1,0 +1,18 @@
+
+<%- include("partials/header"); -%>
+<body>
+  <div class="container">
+    <h1 class="color">Edit</h1>
+    <form action="/post/edit/<%=post._id%>" method="post">
+      <div class="form-group">
+        <label>Title</label>
+        <input value='<%=post.title%>' class="form-control" type="text" name="title">
+        <label>Image Link</label>
+        <input value='<%=post.image%>' class="form-control" type="text" name="image">
+        <label>Content</label>
+        <textarea class="form-control" name="content" rows="5" cols="30"><%=post.content%></textarea>
+      </div>
+      <button class="btn bg-filled mt-3" type="submit">Publish</button>
+    </form>
+  </div>
+<%- include("partials/footer"); -%>

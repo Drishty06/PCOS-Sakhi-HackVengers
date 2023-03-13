@@ -1,0 +1,34 @@
+<%- include("partials/header"); -%>
+<body>
+    <h1 class="color d-flex justify-content-center align-items-center">Welcome Foodie:</h1>
+    <div class="chat-forum">
+
+        <%  res.forEach(function(item){ %>
+            <div class="message">
+                <div class="message-content">
+                    <p class="message-sender">You</p>
+                    <p><%=item.question %></p>
+                </div>
+                <div class="avatar">
+                    <img src="\image\indian-girl-vector-677798.jpg" alt="Avatar">
+                </div>
+            </div>
+            <div class="message">
+                <div class="avatar">
+                    <img src="/image/mom_img.webp" alt="Avatar">
+                  </div>
+              <div class="message-content">
+                <p class="message-sender">Mom</p>
+                <p><%=item.reply %></p>
+              </div>
+            </div>
+        <% }) %>
+        <form class="message-form" action="/chatbox" method="POST">
+          <input type="text" placeholder="Type your message here..." id="query" name="query">
+          <button type="submit">Send</button>
+        </form>
+      </div>
+
+
+
+<%- include("partials/footer"); -%>

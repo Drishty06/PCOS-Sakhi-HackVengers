@@ -25,10 +25,7 @@ const openai = new OpenAIApi(configuration);
 
 // message create event
 // --------------------------------------------
-let prompt =
-  //   "Interview Bot will be taking technical interviews on mentioned topics\n You: Hey, good morning\n Interviewer: Good morning, let us begin with the interview, on which topic do you want this interview to be\n You: Operating System interview questions\n Interviewer: okay let's begin, I will ask 10 questions followed by an evaluation report at the end. I will ask questions from your replies/answers as well. Here goes your first question. What is process synchronization?\n\n ";
-  "hey, can you behave as an interviewer who will be talking technical interviews? I will mention a topic and you will have to ask 10 questions on it and then give the evaluation report.\nInterviewer: Sure, I can act as an interviewer for technical interviews. Please let me know the topic for which you want me to ask questions.\nYou: database management system\nInterviewer: Great, let's get started with the topic of database management systems. Here are 10 potential technical interview questions: Can you define a database management system (DBMS) and explain its purpose?\nYou: Yes, a DBMS is a software system that is used to manage, organize, and maintain data in a database. Its purpose is to provide an efficient and secure way to store, retrieve, and manipulate data as needed by various applications and users.\nInterviewer: Can you explain the different components of a DBMS? Candidate: Yes, a typical DBMS consists of three main components: the data definition language (DDL), the data manipulation language (DML), and the data control language (DCL).Interviewer: Can you explain what each of these components does?";
-
+  
 let convoArr = [];
 client.on("messageCreate", async function (message) {
   try {
@@ -36,10 +33,10 @@ client.on("messageCreate", async function (message) {
 
     const gptResponse = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: `ChatGPT is an interview bot which can ask questions one by one on the topic mentioned by user and make it like a real interview\nInterviewer: on what topic we should start the interview on?\n\ ${message.author.username}: ${message.content}\n\ `,
+      prompt: `You: can you answer like Indian mom, be sarcastic and answer in Hindi + English mix?\nMom: Haanji, main aapki Indian mom hoon! Kya sawaal hai? \n(Yes, I am your Indian mom! What's the question?)\n\nYou: Mom Aaj mene fast food khaya hai. I have only wheat flour, oil, potatoes, and tomatoes. What can I make from these? and also It should be a healthy and PCOS-friendly recipe.\nMom: Arre beta, fast food khaya? Tch tch! Kuch nahi, ab aage se dhyaan rakhna hoga. \n(Oh dear, you ate fast food? Tch tch! No worries, you need to be more careful from now on.)\nAapke paas gehu ka aata, tel, aloo aur tamatar hain? Accha, main aapko kuch aisa recipe bataati hoon jo healthy bhi hai aur PCOS ke liye bhi thik hai. \n(You have wheat flour, oil, potatoes, and tomatoes? Alright, let me tell you a recipe that is healthy and suitable for PCOS.)\nAap aloo ki tikki bana sakti hai. Iske liye aloo ko ubaal kar mash kar lijiye aur tamatar kaat kar saath mein mila dijiye. Fir ismein gehu ka aata aur namak daal kar dough bana lijiye. Iss dough se tikki bana kar tel mein fry kar lijiye. Iss tarah aapko swadisht aloo ki tikki mil jaayegi, jo healthy bhi hai aur aapki PCOS ki diet mein bhi fit hogi.\n(You can make potato tikki. Boil the potatoes, mash them and add chopped tomatoes to it. Then add wheat flour and salt to make a dough. Make tikki from this dough and fry it in oil. This way, you will get a delicious potato tikki that is also healthy and fits into your PCOS diet.)\n\n${message.author.username}: ${message.content}\n\ `,
       temperature: 0.7,
       max_tokens: 900,
-      stop: [" Interviewer:", " You:"],
+      stop: [" You", " Mom:"],
     });
 
     // to consider previous reply in the conversation with gpt
@@ -74,6 +71,7 @@ const rest = new REST({ version: "10" }).setToken(token);
     console.error(error);
   }
 })();
+
 // ----------------------------------------------
 
 // interaction via command

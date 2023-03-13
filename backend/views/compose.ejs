@@ -1,0 +1,21 @@
+
+<%- include("partials/header"); -%>
+<body>
+  <div class="container">
+    <h1 class="color">Compose</h1>
+    <form class="" action="/post/compose" method="post">
+      <div class="form-group">
+        <label>Title *</label>
+        <input class="form-control" type="text" name="title">
+        <label>Image Link</label>
+        <input class="form-control" type="text" name="image">
+        
+        <label>Content *</label>
+        <p class="text-muted">You can use mardown to structure your content</p>
+        <textarea  class="form-control" name="content" rows="5" cols="30"></textarea>
+      </div>
+      <button class="btn bg-filled mt-3" type="submit" name="submit-btn">Publish</button>
+     
+    </form>
+  </div>
+<%- include("partials/footer"); -%>

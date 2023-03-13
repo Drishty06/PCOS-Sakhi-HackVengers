@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+<body>
+  <div class="container">
+
+<div class="login-section">
+  
+          <div class="Box">
+            <div class="center">
+              <h1 class="color">Signup</h1>
+            </div>
+            
+          <% if(existingUser){ %>
+            <p>User already exist please login instead</p>
+          <% } %>
+          
+          <form action="/user/signup" method="POST">
+            <div class="form-group">
+              <label for="name">UserName</label>
+              <input type="text" class="form-control" name="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" name="password">
+            </div>
+            <div class="center">
+              <button type="submit" class="btn bg-filled mx-1 mt-3">Signup</button>
+              <% if(existingUser){ %>
+                <a class="btn bg-filled ms-1 mt-3" href="/user/login" role="button">Login</a>
+              <% } %>
+            </div>
+            
+          </form>
+          </div>
+        
+
+</div>
+
+
+</div>
+<%- include('partials/footer') %>

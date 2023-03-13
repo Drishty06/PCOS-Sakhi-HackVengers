@@ -1,0 +1,26 @@
+
+<%- include("partials/header"); -%>
+<body>
+    <div class="container px-5">
+
+
+
+    <div class="mt-3">
+        <h1 class="color"><%=post.title%></h1>
+        <p class="text-muted mb-2">Created at: <%=post.createdAt.toLocaleString()%></p>
+        <hr>
+        <img src="<%=post.image%>" alt="" class="img-responsive p-1 mb-3 me-3">
+        <div class="text-justify"><%-post.sanitizedHtml%></div>
+        <hr class="thick">
+        <div class="post-btns center">
+            <form action="/post/delete" method="post">
+                <button class="btn m-1 bg-filled" name="delete" value='<%=post._id%>' type="submit">Delete</button>
+            </form>
+            <a href="/post/edit/<%=post._id%>" class="btn m-1 bg-filled">Edit</a>
+        </div>
+        
+    </div>
+
+
+</div>
+<%- include("partials/footer"); -%>
