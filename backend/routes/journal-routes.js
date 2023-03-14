@@ -2,7 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import Post from "./../models/Post.mjs";
 import auth from "./auth.mjs";
+<<<<<<< Updated upstream
 import sentimental_analysis from "./sentimental_analysis-routes.js";
+=======
+import { sentimental_analysis } from "./sentiment-analysis.js";
+>>>>>>> Stashed changes
 
 const router = express.Router();
 
@@ -12,11 +16,16 @@ router.get("/compose", auth, function(req, res){
     res.render("compose");
 });
 router.post("/compose", auth, async(req, res) => {
+  
   if(res.statusCode == 401){  // if user is not logedin redirect to login route (401 status code is send by auth if user is not verified).
     res.redirect("/user/login");
   }
     const { title, content, image } = req.body;
+<<<<<<< Updated upstream
     sentimental_analysis(content)
+=======
+    sentimental_analysis(content);
+>>>>>>> Stashed changes
     let existingUser;
     try {
       existingUser  = req.user;
