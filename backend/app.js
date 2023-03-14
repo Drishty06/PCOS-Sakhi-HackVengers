@@ -37,6 +37,13 @@ app.get("/", function(req,res,next){
     res.render('home_page');
 })
 
+app.get("/predict", function(req,res){
+    res.render('predict');
+})
+
+app.post("/predict", function(req,res){
+    console.log(req.body);
+})
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, function(){
     console.log(`server is running on ${PORT}.......`);

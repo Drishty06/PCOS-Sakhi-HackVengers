@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCOS-Sakhi</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+<script>
+        $.fn.upform = function() {
+    var $this = $(this);
+    var container = $this.find(".upform-main");
+  
+    $(document).ready(function() {
+      $(container).find(".input-block").first().click();
+    });
+  
+    $($this).find("form").submit(function() {
+      return false;
+    });
+  
+    $(container)
+      .find(".input-block")
+      .not(".input-block input")
+      .on("click", function() {
+      rescroll(this);
+    });
+  
+    $(container).find(".input-block input").keypress(function(e) {
+      if (e.which == 13) {
+        if ($(this).hasClass("required") && $(this).val() == "") {
+        } else moveNext(this);
+      }
+    });
+  
+    $(container).find('.input-block input[type="radio"]').change(function(e) {
+      moveNext(this);
+    });
+  
+    $(window).on("scroll", function() {
+      $(container).find(".input-block").each(function() {
+        var etop = $(this).offset().top;
+        var diff = etop - $(window).scrollTop();
+  
+        if (diff > 100 && diff < 300) {
+          reinitState(this);
+        }
+      });
+    });
+  
+    function reinitState(e) {
+      $(container).find(".input-block").removeClass("active");
+  
+      $(container).find(".input-block input").each(function() {
+        $(this).blur();
+      });
+      $(e).addClass("active");
+      /*$(e).find('input').focus();*/
+    }
+  
+    function rescroll(e) {
+      $(window).scrollTo($(e), 200, {
+        offset: { left: 100, top: -200 },
+        queue: false
+      });
+    }
+  
+    function reinit(e) {
+      reinitState(e);
+      rescroll(e);
+    }
+  
+    function moveNext(e) {
+      $(e).parent().parent().next().click();
+    }
+  
+    function movePrev(e) {
+      $(e).parent().parent().prev().click();
+    }
+  };
+  
+  $(".upform").upform();
+  $.fn.upform = function() {
+    var $this = $(this);
+    var container = $this.find(".upform-main");
+  
+    $(document).ready(function() {
+      $(container).find(".input-block").first().click();
+    });
+  
+    $($this).find("form").submit(function() {
+      return false;
+    });
+  
+    $(container)
+      .find(".input-block")
+      .not(".input-block input")
+      .on("click", function() {
+        rescroll(this);
+      });
+  
+    $(container).find(".input-block input").keypress(function(e) {
+      if (e.which == 13) {
+        if ($(this).hasClass("required") && $(this).val() == "") {
+        } else moveNext(this);
+      }
+    });
+  
+    $(container).find('.input-block input[type="radio"]').change(function(e) {
+      moveNext(this);
+    });
+  
+    $(window).on("scroll", function() {
+      $(container).find(".input-block").each(function() {
+        var etop = $(this).offset().top;
+        var diff = etop - $(window).scrollTop();
+  
+        if (diff > 100 && diff < 300) {
+          reinitState(this);
+        }
+      });
+    });
+  
+    function reinitState(e) {
+      $(container).find(".input-block").removeClass("active");
+  
+      $(container).find(".input-block input").each(function() {
+        $(this).blur();
+      });
+      $(e).addClass("active");
+      /*$(e).find('input').focus();*/
+    }
+  
+    function rescroll(e) {
+      $(window).scrollTo($(e), 200, {
+        offset: { left: 100, top: -200 },
+        queue: false
+      });
+    }
+  
+    function reinit(e) {
+      reinitState(e);
+      rescroll(e);
+    }
+  
+    function moveNext(e) {
+      $(e).parent().parent().next().click();
+    }
+  
+    function movePrev(e) {
+      $(e).parent().parent().prev().click();
+    }
+  };
+  
+  $(".upform").upform();
+  
+
+    </script>
+</head>
+<style>
+    /* PAGE & INPUT STYLING */
+body {
+  background: #fae3e9;
+  color: #000;
+}
+
+.btn {
+  border: 1px solid #fb6f92;
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 20px;
+  position: relative;
+  text-align: left;
+  border-radius: 3px;
+  -webkit-transition: background 600ms ease, color 600ms ease;
+  transition: background 600ms ease, color 600ms ease;
+}
+.btn span {
+  border: 1px solid #fb6f92;
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 12px;
+  border-radius: 5px;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: -5px;
+}
+
+input[type="radio"].toggle {
+  display: none;
+}
+input[type="radio"].toggle + label {
+  cursor: pointer;
+  min-width: 80px;
+}
+input[type="radio"].toggle + label:hover {
+  background: none;
+  color: #FFF;
+}
+input[type="radio"].toggle + label:after {
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  -webkit-transition: left 100ms cubic-bezier(0.77, 0, 0.175, 1);
+  transition: left 100ms cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  z-index: -1;
+}
+input[type="radio"].toggle.toggle-left + label {
+
+}
+input[type="radio"].toggle.toggle-left + label:after {
+  left: 100%;
+}
+input[type="radio"].toggle.toggle-right + label {
+  margin-left: 10px;
+}
+input[type="radio"].toggle.toggle-right + label:after {
+  left: -100%;
+}
+input[type="radio"].toggle:checked + label {
+  background: #FFF;
+  cursor: default;
+  color: #000;
+}
+input[type="radio"].toggle:checked + label:after {
+  left: 0;
+}
+
+/* ENDS */
+
+/* UPFORM STYLE STARTS*/
+.upform input:focus, select:focus, textarea:focus, button:focus {
+  outline: none;
+  border-color: #fb6f92 !important;
+}
+.upform input, select, textarea {
+  background-color: transparent;
+  color: #000;
+}
+.upform {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+		            supported by Chrome and Opera */
+  max-width: 900px;
+  margin: 300px auto;
+  margin-bottom: 500px;
+  padding: 0 20px;
+}
+
+.upform .upform-main {
+}
+.upform .upform-main .input-block {
+  padding: 30px 0;
+  /* opacity: 0.25; */
+  cursor: default;
+}
+.upform .upform-main .input-block .label {
+  display: block;
+  font-size: 1.1em;
+  line-height: 30px;
+}
+.upform .upform-main .input-block .input-control {
+  margin: 20px 0;
+}
+.upform .upform-main .input-block .input-control input[type=text] {
+  border: none;
+  outline-width: 0;
+  border-bottom: 2px solid #CCC;
+  width: 100%;
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+
+/* .upform .upform-main .input-block.active {
+  opacity: 0;
+} */
+
+.upform .upform-footer {
+  margin-top: 60px;
+}
+.upform .upform-footer .btn {
+  font-size: 24px;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+/* UPFORM STYLE ENDS*/
+
+</style>
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img class="logo-img" src="\image\pink_logo-removebg-preview_1.svg"/>PCOS-Sakhi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-3 my-lg-0 navbar-nav-scroll ml-auto" style="--bs-scroll-height: 100px;">
+          <li class="nav-item mx-4">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link disabled">Predict</a>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/chatbox">Foodie</a>
+          </li>
+          <li class="nav-item mx-3 mr-5">
+            <a class="nav-link disabled" href="/user/journal">Moodie</a>
+          </li>
+         
+        </ul>
+    
+      </div>
+    </div>
+  </nav>
+    <div class="upform">
+
+    <form  method="POST", action="/predict" >
+  
+      <div class="upform-header"></div>
+  
+      <div class="upform-main">
+        <!--  -->
+        <div class="input-block">
+          <div class="label">How old are you?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="b" placeholder="Age(years)" autocomplete="off">
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you ever been pregnant?</div>
+          <div class="input-control">
+            <input id="toggle-on-q1" class="toggle toggle-left" name="c" value="1" type="radio">
+            <label for="toggle-on-q1" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q1" class="toggle toggle-right" name="c" value="0" type="radio">
+            <label for="toggle-off-q1" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you ever had an abortion, if yes how many? (if not, please enter 0)</div>
+          <div class="input-control">
+            <input id="toggle-on-q2" class="toggle toggle-left" name="d" value="1" type="radio">
+            <label for="toggle-on-q2" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q2" class="toggle toggle-right" name="d" value="0" type="radio">
+            <label for="toggle-off-q2" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Do you feel bloated in these past few weeks?</div>
+          <div class="input-control">
+            <input id="toggle-on-q3" class="toggle toggle-left" name="e" value="1" type="radio">
+            <label for="toggle-on-q3" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q3" class="toggle toggle-right" name="e" value="0" type="radio">
+            <label for="toggle-off-q3" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+        <!--  -->
+
+        <div class="input-block">
+          <div class="label">Do you get a lot of facial hair?</div>
+          <div class="input-control">
+            <input id="toggle-on-q4" class="toggle toggle-left" name="f" value="1" type="radio">
+            <label for="toggle-on-q4" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q4" class="toggle toggle-right" name="f" value="0" type="radio">
+            <label for="toggle-off-q4" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Do you have any chest hair?</div>
+          <div class="input-control">
+            <input id="toggle-on-q5" class="toggle toggle-left" name="g" value="1" type="radio">
+            <label for="toggle-on-q5" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q5" class="toggle toggle-right" name="g" value="0" type="radio">
+            <label for="toggle-off-q5" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you been facing difficulty in loosing weight?</div>
+          <div class="input-control">
+            <input id="toggle-on-q6" class="toggle toggle-left" name="h" value="1" type="radio">
+            <label for="toggle-on-q6" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q6" class="toggle toggle-right" name="h" value="0" type="radio">
+            <label for="toggle-off-q6" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Do you feel too moody?</div>
+          <div class="input-control">
+            <input id="toggle-on-q7" class="toggle toggle-left" name="i" value="1" type="radio">
+            <label for="toggle-on-q7" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q7" class="toggle toggle-right" name="i" value="0" type="radio">
+            <label for="toggle-off-q7" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">In general, do you feel depressed or stressed out at times?</div>
+          <div class="input-control">
+            <input id="toggle-on-q8" class="toggle toggle-left" name="j" value="1" type="radio">
+            <label for="toggle-on-q8" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q8" class="toggle toggle-right" name="j" value="0" type="radio">
+            <label for="toggle-off-q8" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">Do you sleep well at night?</div>
+          <div class="input-control">
+            <input id="toggle-on-q9" class="toggle toggle-left" name="k" value="1" type="radio">
+            <label for="toggle-on-q9" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q9" class="toggle toggle-right" name="k" value="0" type="radio">
+            <label for="toggle-off-q9" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">We know this could be depressing but have you recently gained weight</div>
+          <div class="input-control">
+            <input id="toggle-on-q10" class="toggle toggle-left" name="l" value="1" type="radio">
+            <label for="toggle-on-q10" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q10" class="toggle toggle-right" name="l" value="0" type="radio">
+            <label for="toggle-off-q10" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+<!--  -->
+        <div class="input-block">
+          <div class="label">Have you seen your hair grow in the past couple of months?</div>
+          <div class="input-control">
+            <input id="toggle-on-q11" class="toggle toggle-left" name="m" value="1" type="radio">
+            <label for="toggle-on-q11" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q11" class="toggle toggle-right" name="m" value="0" type="radio">
+            <label for="toggle-off-q11" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+<!--  -->
+        <!--  -->
+        
+        <div class="input-block">
+          <div class="label">Has your skin darkened in the recent months?</div>
+          <div class="input-control">
+            <input id="toggle-on-q12" class="toggle toggle-left" name="n" value="1" type="radio">
+            <label for="toggle-on-q12" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q12" class="toggle toggle-right" name="n" value="0" type="radio">
+            <label for="toggle-off-q12" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="input-block">
+          <div class="label">Have you suffered from hair loss recently?</div>
+          <div class="input-control">
+            <input id="toggle-on-q13" class="toggle toggle-left" name="o" value="1" type="radio">
+            <label for="toggle-on-q13" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q13" class="toggle toggle-right" name="o" value="0" type="radio">
+            <label for="toggle-off-q13" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+  
+        <div class="input-block">
+          <div class="label">We know that pimples always pop up at the wrong times but is that frequent with you?</div>
+          <div class="input-control">
+            <input id="toggle-on-q14" class="toggle toggle-left" name="p" value="1" type="radio">
+            <label for="toggle-on-q14" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q14" class="toggle toggle-right" name="p" value="0" type="radio">
+            <label for="toggle-off-q14" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+  
+        
+        <div class="input-block">
+          <div class="label">Burger King could be awfully delicious at times but do you consume fast-food frequently?</div>
+          <div class="input-control">
+            <input id="toggle-on-q15" class="toggle toggle-left" name="q" value="1" type="radio">
+            <label for="toggle-on-q15" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q15" class="toggle toggle-right" name="q" value="0" type="radio">
+            <label for="toggle-off-q15" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">Do you exercise regularly?</div>
+          <div class="input-control">
+            <input id="toggle-on-q16" class="toggle toggle-left" name="r" value="1" type="radio">
+            <label for="toggle-on-q16" class="btn"><span>A</span> Yes</label>
+            <input id="toggle-off-q16" class="toggle toggle-right" name="r" value="0" type="radio">
+            <label for="toggle-off-q16" class="btn"><span>B</span> No</label>
+          </div>
+        </div>
+  
+
+        <!--  -->
+        <!--  -->
+
+        <div class="input-block">
+          <div class="label">How much do you weigh?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="s" placeholder="Weight(Kg)" autocomplete="off">
+          </div>
+        </div>
+
+
+        <div class="input-block">
+          <div class="label"> How tall are you?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="t" placeholder="Height(cm)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">What is your BMI?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="u" placeholder="BMI" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">What is your blood group?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="v" placeholder="Blood group" autocomplete="off">
+          </div>
+        </div>
+        
+                
+        <div class="input-block">
+          <div class="label">  What is your pulse rate?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="w" placeholder="Pulse Rate(bpm)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label"> In how many months, do you get your cycle?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="x" placeholder="Cycle length in months" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">How long does your cycle last?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="y" placeholder="Cycle length in days" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">  What's your marital status?</div>
+          <div class="input-control">
+            <input type="text" class="required" name="z" placeholder="Marriage Status (Years)" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label">Could you take your inchtape and tell us about your hip measurement? (inch)</div>
+          <div class="input-control">
+            <input type="text" class="required" name="za" placeholder="Hip Size in inch" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="input-block">
+          <div class="label"> We'll need the inchtape again. Now, tell us about your waist measurement? (inch)</div>
+          <div class="input-control">
+            <input type="text" class="required" name="zb" placeholder="Waist size in inch" autocomplete="off">
+          </div>
+        </div>
+      </div>
+  
+      <div class="upform-footer">
+        <button type="submit" value="result" class="btn btn-lg btn-type1" name="b" placeholder="Age(years)" required >Submit</button>
+      </div>
+  
+    </form>
+  
+  
+  </div>
+
+<div class="footer-padding"></div>
+  <div class="footer">
+    <p>Made with 🤍 by Team Love Hack Conspiracy</p>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+</body>
+</html>
