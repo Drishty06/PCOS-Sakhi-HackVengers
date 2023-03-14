@@ -55,16 +55,17 @@
        'Pulse rate(bpm) ', 'Cycle(months)', 'Cycle length(days)',
        'Marriage Status (Yrs)', 'Hip(inch)', 'Waist(inch)', 'Waist/Hip Ratio']`
        
-* Model Link: 
+* Model Link: https://github.com/Drishty06/PCOS-Sakhi-HackVengers/blob/master/backend/pcos_prediction.py
 * EDA Analysis Images:
-* Dataset Link:
+* Dataset Link: 1) https://github.com/Drishty06/PCOS-Sakhi-HackVengers/blob/master/PCOS_data_without_infertility%20(1).xlsx
+                2) https://github.com/Drishty06/PCOS-Sakhi-HackVengers/blob/master/PCOS_infertility.csv
 
 ## Moodie: 
 * Works on improving the mental health of Women and help them overcome anxiety and depression by Daily Journalling and performing **Sentiment Analysis** on the journal data
 * Performing Emotion based Sentiment Analysis and give weekly analysis, daily challenges, song therapy on the basis of it. 
 * This consists of journal based interface which uses pretrained model from Huggingface to detect the emotions in the journal.
-* Model Details:
-* Sentiment Analysis JS code: 
+* Model Details: https://github.com/Drishty06/PCOS-Sakhi-HackVengers/blob/master/backend/routes/sentimental_analysis.py
+* Sentiment Analysis JS code: https://github.com/Drishty06/PCOS-Sakhi-HackVengers/blob/master/backend/routes/sentimental_analysis-routes.js
 
 ## Foodie: 
 * This section consists of conversation interface which behaves like as if the person is talking to her Mom and suggests Indian receipes, behaves sarcastically and replies in Hindi and English, suggests PCOS-friendly receipes, stops from eating fast food and the food which causes weight gain
