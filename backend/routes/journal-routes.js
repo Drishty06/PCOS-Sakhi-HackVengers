@@ -2,7 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import Post from "./../models/Post.mjs";
 import auth from "./auth.mjs";
-
+import sentimental_analysis from "./sentimental_analysis-routes.js";
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.post("/compose", auth, async(req, res) => {
     res.redirect("/user/login");
   }
     const { title, content, image } = req.body;
-    
+    sentimental_analysis(content)
     let existingUser;
     try {
       existingUser  = req.user;
