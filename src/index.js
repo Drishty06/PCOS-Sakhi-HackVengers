@@ -4,6 +4,7 @@ const client_id = process.env.DISCORDJS_CLIENT_ID;
 
 // discord client
 // ---------------------------------------------
+
 const { Client, GatewayIntentBits } = require("discord.js");
 const client = new Client({
   intents: [
