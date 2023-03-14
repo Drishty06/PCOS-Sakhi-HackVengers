@@ -71,8 +71,7 @@
 * This section consists of conversation interface which behaves like as if the person is talking to her Mom and suggests Indian receipes, behaves sarcastically and replies in Hindi and English, suggests PCOS-friendly receipes, stops from eating fast food and the food which causes weight gain
 * It uses OpenAI API which has the prompt as described above
 * The same thing is implemented as a discord bot using Discord.js
-* API Integration:
-* Discord Bot code:
+* API Integration: https://github.com/Drishty06/PCOS-Sakhi-HackVengers/blob/master/backend/routes/chat-routes.js
 
 
 # Technologies we used 👩🏻‍💻
@@ -86,6 +85,8 @@
   * Node.js
   * Discord.js
   * Express.js
+  * bcrypt.js
+  * jwt
   * MongoDB
 
 
