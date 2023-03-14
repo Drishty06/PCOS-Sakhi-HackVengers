@@ -37,10 +37,10 @@
 ## PCOS-detection:
 | Model | Accuracy | 
 | --- | --- |
-| Logistic Regression | |
-| Decision Tree | | 
-| Support Vector Machine | | 
-| Random Forest Classifier | | 
+| Logistic Regression | 79% |
+| Decision Tree | 67% | 
+| Support Vector Machine | 59% | 
+| Random Forest Classifier | 83% | 
 
 * Performed Data Preprocessing, Exploratory Data Analysis, applied scaling, tried models like Logistic Regression, SVM, Decision tree classfier, Random Forest Classfier
 * This model uses Random Forest Classifier to classify whether the person has high chances of PCOS and should reach out to a doctor
@@ -100,7 +100,9 @@ Description of the things performed before hack hours
 
 # Future Vision of Project PCOS-Sakhi 📝
 * Song therapy using Spotify API by considering spotify account of the user and suggest song therapy based on the sentiment analysis from daily journaling. 
-* 
+* We plan to organize events and workshops that focus on PCOS education and awareness-raising. These events will provide a platform for women with PCOS to share their experiences and connect with others who have the condition.
+* Community Forum 
+
 
 
 
