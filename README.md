@@ -22,7 +22,10 @@
 > while there is no cure for PCOS, early diagnosis and management can improve quality of life and prevent long-term health complications such as diabetes and heart disease.
 
 # Features:
-*
+* PCOS-Detection using ML-based model which takes input from the user and gives the insights on whether they should take PCOS seriously and consult doctor 
+* Sentiment analysis based on daily journaling(daily diary and gratitude journal) and providing weekly emotional analysis, daily Challenges, song therapy on the basis of it. Daily Challenges and song therapy is yet to be implemented
+* Interactive ChatBot suggesting Indian Recepies and behaving like Mom and gives PCOS-friendly Dietary options and giving replies in hindi + English and behaving in a funny and sarcastic manner. Discord bot for the above mentioned feature as well.
+
 
 # Our Solution - PCOS-Sakhi 
 * PCOS-Sakhi consists of mainly 3 sections:
@@ -86,18 +89,19 @@
 
 
 # Project Timeline ⏰
+Description of the things performed before hack hours
 | Title | Timeline | Description |
 | --- | --- | --- |
-| OpenAI API Integration and Discord Bot | Before + During Hack hours | Updated the prompt during Hack Hours |
+| OpenAI API Integration and Discord Bot | Before + During Hack hours | Updated the prompt and tailored the code according to our features during Hack Hours |
 | PCOS-detection model | Before + During Hack hours | Started collecting and finding the relevant dataset for PCOS and cleaning the data partially before hack hours and implemented the models and integrated model with Backend during Hack hours | 
-
+| Sentiment Analysis | Before + During Hack hours | Worked partially on huggingface models for emotion based sentiment analysis before hack hours and finalized the model and performed integrated with daily journaling during hack hours | 
 
 
 
 # Future Vision of Project PCOS-Sakhi 📝
+* Song therapy using Spotify API by considering spotify account of the user and suggest song therapy based on the sentiment analysis from daily journaling. 
+* 
 
-
-# Team 🤝🏻
 
 
 
